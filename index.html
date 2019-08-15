@@ -80,7 +80,7 @@
 
 					<div class="col-md-12" style="text-align: left">
 						<div class="col-sm">
-							<p style='margin-bottom: 20px; margin-top: 10px; color: grey'>The Data of Community Feedback Dashboard are received from various humanitarian agencies who have been involved in Community Engagement Working Group in Palu, Central Sulawesi – Tsunami, Earthquake and Liquefaction Disaster. The Dashboard are designed to support humanitarian agencies or workers to make decision and adjust the programme by providing the knowledge of what affected community’s concerns and needs in Central Sulawesi.</p>
+							<p style='margin-bottom: 20px; margin-top: 10px; color: grey'>The Data of Community Feedback Dashboard are received from various humanitarian agencies who have been involved in Community Engagement Working Group in Palu, Central Sulawesi – Earthquake, Tsunami and Liquefaction Disaster. The Dashboard are designed to support humanitarian agencies or workers to make decision and adjust the programme by providing the knowledge of what affected community’s concerns and needs in Central Sulawesi.</p>
 						</div>
 						<div class="col-sm" style="margin-bottom: 20px">
 							<font class="tdtit"><h3>Key Figure</h3></font>
@@ -373,7 +373,7 @@
 
 		  		function draw_report(thedata,divid){
 					
-					var thedata = [['kategory_ub', 'Total']];
+					var thedata = [['feedback_category', 'Total']];
 	    		for(x in gv_report){
 	    			thedata.push([x,gv_report[x]])
 	    		}
@@ -496,7 +496,7 @@
 					    }
 						}
 						thedata.sort(sortFunction);
-						thedata.unshift(['saluran_umpan_balik', 'Total']);		
+						thedata.unshift(['Feedback_channel', 'Total']);		
 
 		    		// Load google charts
 						google.charts.load('current', {packages: ['corechart', 'bar']});
@@ -584,15 +584,15 @@
 		    		var datatblfor = [];
 		    		data.forEach(function(z){
 		    			var newdata = [	
-		    						// z['Periode_laporan'],
-		    						z['org'],
+		    						// z['reporting_period'],
+		    						z['organisation'],
 		    						z['sector'],
-		    						z['kategory_ub'],
-		    						z['saluran_umpan_balik'],
+		    						z['feedback_category'],
+		    						z['Feedback_channel'],
 		    						z['status'],
 		    						// z['Complaint Category'],
-		    						z['Kabupaten/kota'],
-		    						z['Kecamatan'],
+		    						z['District'],
+		    						z['SubDistrict'],
 		    						// z['Desa/posko/huntara'],
 		    						// z['LAT'],
 		    						// z['LON'],
@@ -605,7 +605,7 @@
 		    		theDataTableInit = $('#datatable').DataTable( {
 		    			data: datatblfor,
 				        columns: [
-				            // { title: "Periode_laporan" },
+				            // { title: "reporting_period" },
 				            { title: "Organization"},
 				            { title: "Sector" },
 				            { title: "Feedback Category" },
@@ -663,7 +663,7 @@
 					var data = [];
 					if(period != 'all'){
 						thedata.forEach(function(d){
-							if(d['Periode_laporan'] == period){
+							if(d['reporting_period'] == period){
 								data.push(d);
 							}
 						})
@@ -677,10 +677,10 @@
 						var newlogagain = [];
 						if(divsankey[yy] == 'sankeydiagram'){
 							var sankey = [['Origin','Destination','Total']];
-							var kolom_yang_digunakan = ['org','sector','saluran_umpan_balik','kategory_ub'];
+							var kolom_yang_digunakan = ['organisation','sector','Feedback_channel','feedback_category'];
 						}else{
 							var sankey = [['Origin','Destination','Total']];
-							var kolom_yang_digunakan = ['org','saluran_umpan_balik','kategory_ub'];
+							var kolom_yang_digunakan = ['organisation','Feedback_channel','feedback_category'];
 						}
 						
 						data.forEach(function(d){
@@ -738,10 +738,10 @@
 						gv_report = [];
 						//FOR REPORT
 						data.forEach(function(d){
-							if(!gv_report[d.kategory_ub]){
-								gv_report[d.kategory_ub] = 1;
+							if(!gv_report[d.feedback_category]){
+								gv_report[d.feedback_category] = 1;
 							}else{
-								gv_report[d.kategory_ub] +=1;
+								gv_report[d.feedback_category] +=1;
 							}
 						});
 						
@@ -759,10 +759,10 @@
 						gv_channel = [];
 						//FOR CHANNEL
 						data.forEach(function(d){
-							if(!gv_channel[d.saluran_umpan_balik]){
-								gv_channel[d.saluran_umpan_balik] = 1;
+							if(!gv_channel[d.Feedback_channel]){
+								gv_channel[d.Feedback_channel] = 1;
 							}else{
-								gv_channel[d.saluran_umpan_balik] +=1;
+								gv_channel[d.Feedback_channel] +=1;
 							}
 						});
 
@@ -807,13 +807,13 @@
 
 					//SANKEY-----------------------------------------
 
-					d3.csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vShhH0xK1KsFunYHsWTIBkFi0HgINQe0WPsP11gWJSQ5jK1OV9BvskLj6gia_2c-4pJy8Uhb4tp_QkA/pub?output=csv',function(data){
+					d3.csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vTb169gtEacCWSi1bit44q3bal1QNRKpROY_lsoRNWvDrakIqdtuMaqaQFtjnzL4AdKHm3RdXZHqOuq/pub?output=csv',function(data){
 						gv_allthedata = data;
 						gv_period = [];
 						data.forEach(function(d){
-							if($.inArray(d['Periode_laporan'],gv_period) == -1){
-								gv_period.push(d['Periode_laporan']);
-								$('#periodselect').append('<option value="'+d['Periode_laporan']+'">'+d['Periode_laporan']+'</option>');
+							if($.inArray(d['reporting_period'],gv_period) == -1){
+								gv_period.push(d['reporting_period']);
+								$('#periodselect').append('<option value="'+d['reporting_period']+'">'+d['reporting_period']+'</option>');
 							}
 						})
 						generateallgraph(gv_allthedata,'all');
