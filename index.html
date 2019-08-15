@@ -770,10 +770,10 @@
 						//for circle
 						var datacirclemap = [];
 						data.forEach(function(d){
-							if(!datacirclemap[d['Kecamatan']]){
-								datacirclemap[d['Kecamatan']] = [d['LAT'],d['LON'],0];
+							if(!datacirclemap[d['SubDistrict']]){
+								datacirclemap[d['SubDistrict']] = [d['LAT'],d['LON'],0];
 							}
-							datacirclemap[d['Kecamatan']][2] +=1;
+							datacirclemap[d['SubDistrict']][2] +=1;
 						})
 						// --------------------------------------------------------
 
