@@ -437,7 +437,7 @@
 					    }
 						}
 						thedata.sort(sortFunction);
-						thedata.unshift(['sector', 'Total']);		
+						thedata.unshift(['', 'Total']);		
 
 		    		// Load google charts
 						google.charts.load('current', {packages: ['corechart', 'bar']});
@@ -450,17 +450,17 @@
 					      	colors:['#cf1207'],
 					        
 					        hAxis: {
-					          title: 'Sectors',
+					          title: '',
 					          minValue: 0
 					        },
 					        vAxis: {
-					          // title: 'Sectors'
 					          textStyle:{
 					          	fontSize:10
 					          }
 					        },
 					        legend: { position: "none" },
 					        bars: 'horizontal',
+
 					        annotations: {
 					          alwaysOutside: true,
 					          textStyle: {
@@ -500,7 +500,7 @@
 					    }
 						}
 						thedata.sort(sortFunction);
-						thedata.unshift(['Feedback_channel', 'Total']);		
+						thedata.unshift(['', 'Total']);		
 
 		    		// Load google charts
 						google.charts.load('current', {packages: ['corechart', 'bar']});
