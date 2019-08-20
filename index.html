@@ -48,7 +48,7 @@
 		 }
    		</style>
 
-		<title>CEWG!</title>
+		<title>CEWG Dashboard</title>
 
 	</head>
 
@@ -581,6 +581,7 @@
 
 				// function to draw the data table
 		    	function draw_DataTable(data){	
+		    		
 		    		if(theDataTableInit){
 		    			theDataTableInit.destroy();
 		    		}
@@ -782,7 +783,7 @@
 						// --------------------------------------------------------
 
 					}
-
+					console.log(data);
 					draw_sankey(sankey,divsankey[yy]);
 					draw_status();
 					draw_report();
@@ -797,7 +798,7 @@
 
 					// KEY FEATURE------------------------------------
 
-					d3.csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vQNbmc1upL60S1VBzxyBLEoEblM2ilsAdDVNNC1TS2wh_o7c3V-wOzxalGwhGdnL6w0dnDquHNMoAsK/pub?output=csv',function(data){
+					d3.csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vQIGEWgLbiYBBGLQMq4nfIBPN1d6fJ5RPu6NXv35wk1ehbFFEjSC44ukc5nxXbyYdzbSiLw9QPIB0OA/pub?output=csv',function(data){
 						let numberformat = d3.format(",d");
 						let i = 1;
 						for(x in data[0]){
@@ -806,7 +807,7 @@
 							$('#kfa'+i).html(data[0][x]);
 							i+=1;
 						}
-						console.log(data);
+						// console.log(data);
 					})
 
 					//SANKEY-----------------------------------------
