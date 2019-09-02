@@ -88,7 +88,7 @@
 							<p style='margin-bottom: 20px; margin-top: 10px; color: grey'>The Data of Community Feedback Dashboard are received from various humanitarian agencies who have been involved in Community Engagement Working Group in Palu, Central Sulawesi – Earthquake, Tsunami and Liquefaction Disaster. The Dashboard are designed to support humanitarian agencies or workers to make decision and adjust the programme by providing the knowledge of what affected community’s concerns and needs in Central Sulawesi.</p>
 						</div>
 						<div class="col-sm" style="margin-bottom: 20px">
-							<font class="tdtit"><h3>Key Figure</h3></font>
+							<font class="tdtit"><h3>Key Figures</h3></font>
 						</div>
 					</div>
 
@@ -164,7 +164,7 @@
 									</tr>
 									<tr>
 										<td>
-											<font class='panelTitleBold' style="font-size: 14px; padding-left: 20px">Girl</font>
+											<font class='panelTitleBold' style="font-size: 14px; padding-left: 20px">Girls</font>
 										</td>
 									</tr>
 								</table>
@@ -189,7 +189,7 @@
 							<div class="col-sm">
 								<center>
 									<select class="form-control" id="periodselect" data-default ="0">
-										<option value="all">Period</option>
+										<option value="all">All</option>
 									</select>     
 								</center>
 							</div>
@@ -216,7 +216,7 @@
 					    					<div class="row">
 					    						<div class="col-md-12"></div>
 													<div class="col-md-12" style="margin-bottom: 15px">Feedback Channel</div>
-													<div class="col-md-12 sbmap" id="feedbak_channel"></div>
+													<div class="col-md-12 sbmap" style="padding-left: 87px" id="feedbak_channel"></div>
 												</div>
 											</div>
 										</div>
@@ -551,6 +551,7 @@
 				function draw_sankey(thedata,divid){
 					google.charts.load('current', {'packages':['sankey']});
 					google.charts.setOnLoadCallback(drawChart);
+					console.log(thedata)
 
 					function drawChart() {
 						var data = new google.visualization.arrayToDataTable(thedata);
@@ -783,7 +784,7 @@
 						// --------------------------------------------------------
 
 					}
-					console.log(data);
+					// console.log(data);
 					draw_sankey(sankey,divsankey[yy]);
 					draw_status();
 					draw_report();
