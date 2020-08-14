@@ -54,7 +54,7 @@
 
 	<body>
 
-		<div id="loadinggif"><img src="https://ui-ex.com/images/gif-transparent-loading-4.gif"></div>
+		<div id="loadinggif"><img src="./images/hdx-loading.gif"></div>
 		
 		<div class="redbackground">
 			<div class="container">
@@ -454,7 +454,11 @@
 					          minValue: 0
 					        },
 					        vAxis: {
-					          textStyle:{
+					          gridlines: {
+						        color:'none',
+						        baselinecolor: 'transparent'
+						      },
+						      textStyle:{
 					          	fontSize:10
 					          }
 					        },
@@ -799,7 +803,7 @@
 
 					// KEY FEATURE------------------------------------
 
-					d3.csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vQIGEWgLbiYBBGLQMq4nfIBPN1d6fJ5RPu6NXv35wk1ehbFFEjSC44ukc5nxXbyYdzbSiLw9QPIB0OA/pub?output=csv',function(data){
+					d3.csv('./data/key_figure.csv',function(data){
 						let numberformat = d3.format(",d");
 						let i = 1;
 						for(x in data[0]){
@@ -813,7 +817,7 @@
 
 					//SANKEY-----------------------------------------
 
-					d3.csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vTb169gtEacCWSi1bit44q3bal1QNRKpROY_lsoRNWvDrakIqdtuMaqaQFtjnzL4AdKHm3RdXZHqOuq/pub?output=csv',function(data){
+					d3.csv('./data/eng_cewg_sulteng_final.csv',function(data){
 						gv_allthedata = data;
 						gv_period = [];
 						data.forEach(function(d){
